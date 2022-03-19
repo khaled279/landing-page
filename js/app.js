@@ -30,7 +30,40 @@
  * 
 */
 
+function getAllSections(){
+   
+    return document.getElementsByTagName('section') ; 
+}
 
+function createListItems(){
+    let documentFragment = document.createDocumentFragment(); 
+    let sections = getAllSections(); 
+    let navBarUL = document.getElementById('navbar__list') ; 
+    for(let section of sections){
+        let listItem = document.createElement('li'); 
+        let anchor = document.createElement('a'); 
+        anchor.href = `#${section.id}`;
+        anchor.target = "_self" ;
+        anchor.textContent = section.id ; 
+        listItem.appendChild(anchor); 
+        documentFragment.appendChild(listItem); 
+    }
+    navBarUL.appendChild(documentFragment); 
+    console.log()
+    console.log("createListItem" , "Everything ran smoothly") ;
+}
+function checkSection(){
+    let sections = getAllSections(); 
+ for(let section of sections){
+    if (window.location.pathname+window.location.hash == `/index.html#${section.id}`) {
+     console.log('Viewing contact form' + section.id);
+    }
+ }
+ console.log("checking") ; 
+ }
+
+document.addEventListener('scroll',checkSection()) ; 
+createListItems(); 
 
 /**
  * End Helper Functions
@@ -60,3 +93,4 @@
 // Set sections as active
 
 
+console.log("THEY ARE LINKED"); 
