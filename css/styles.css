@@ -79,6 +79,7 @@ section {
 }
 .navbar__menu li a{
     text-decoration: none;
+    color: #fff;
 }
 .navbar__menu li a:visited{
     text-decoration: none;

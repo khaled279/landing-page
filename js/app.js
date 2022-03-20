@@ -67,7 +67,7 @@ function createListItems(){
 {            const sectionLink = event.target.getAttribute("href"); 
             const section =document.getElementById(sectionLink.substring(1)); 
             section.scrollIntoView({ behavior: 'smooth' }) ;
-        }
+            toggleNavMenu();         }
         }
     ) ; 
     // append the document fragment to the DOM just 1 reflow and 1 redraw
