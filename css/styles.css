@@ -93,7 +93,40 @@ section {
     color: #cc1 !important;
 }
 
+.small-dash{
+    height: 3px;
+    width: 25px;
+    display: block;
+    background-color: #fff;
+    margin: 5px;
 
+}
+
+.mobile-menu{
+    display: none;
+    float: right;
+}
+
+/* media queries to ensure responsivness */
+@media only screen and (max-width: 768px) {
+    .navbar__menu ul{
+        position: fixed;
+        left: -100%;
+        top: 1.5rem;
+        flex-direction: column;
+        background-color: #000;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+    .mobile-menu {
+        display: block;
+        cursor: pointer;
+    }
+    .navbar__menu ul.active {
+        left: 0;
+    }
+}
 
 .navbar__menu .menu__link {
     display: block;

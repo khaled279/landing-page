@@ -22,7 +22,9 @@
  * Define Global Variables
  * 
 */
-
+const mabileMenu = document.querySelector(".mobile-menu");
+const navBarUL = document.getElementById('navbar__list') ; 
+ 
 
 /**
  * End Global Variables
@@ -34,17 +36,17 @@ function getAllSections(){
    
     return document.getElementsByTagName('section') ; 
 }
+
 // creates all Li and appends them to the UL 
 function createListItems(){
     // using document fargment to achieve better performance 
     //(currently it's not making much difference but if we have alot )
     
     let documentFragment = document.createDocumentFragment(); 
-   
+
     // gets all the sections in an HTMLCOLLECTION
-    
+
     const sections = getAllSections();
-    const navBarUL = document.getElementById('navbar__list') ; 
     for(let section of sections){
         let listItem = document.createElement('li'); 
         let anchor = document.createElement('a'); 
@@ -97,9 +99,17 @@ for(let section of sections){
     }
 }
  }
+
  
+ mabileMenu.addEventListener("click", toggleNavMenu);
+
 createListItems(); 
 document.addEventListener("scroll",checkSection) ; 
+
+function toggleNavMenu(){
+    mabileMenu.classList.toggle("active");
+    navBarUL.classList.toggle("active");
+}
 
 
 /**
@@ -128,6 +138,3 @@ document.addEventListener("scroll",checkSection) ;
 // Scroll to section on link click
 
 // Set sections as active
-
-
-console.log("THEY ARE LINKED"); 
