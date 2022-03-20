@@ -45,12 +45,16 @@ function createListItems(){
         anchor.href = `#${section.id}`;
         anchor.target = "_self" ;
         anchor.textContent = section.id ; 
-        anchor.onclick = function(){
-            section.scrollIntoView({ behavior: 'smooth' }) ;
-            return false;}; 
         listItem.appendChild(anchor); 
         documentFragment.appendChild(listItem); 
     }
+    navBarUL.addEventListener('click', function handleAnchorClicks(event){
+            event.preventDefault() ; 
+            const sectionLink = event.target.getAttribute("href"); 
+            const section =document.getElementById(sectionLink.substring(1)); 
+            section.scrollIntoView({ behavior: 'smooth' }) ;
+        }
+    ) ; 
     navBarUL.appendChild(documentFragment); 
     console.log()
     console.log("createListItem" , "Everything ran smoothly") ;
@@ -62,9 +66,7 @@ function checkSection(){
  
 for(let section of sections){
     const menuItem = document.querySelector(`[href="#${section.id}"]`);
-    console.log(menuItem); 
     if (scrollY >= section.offsetTop-200) {
-     console.log('Viewing section' + section.id);
      for(let removeSection of sections) {
         removeSection.classList.remove('your-active-class'); 
         const otherMenuItems =  document.querySelector(`[href="#${removeSection.id}"]`);
@@ -74,7 +76,6 @@ for(let section of sections){
      menuItem.classList.add('your-active-class'); 
     }
 }
- console.log("checking") ;   
  }
 
 document.addEventListener("scroll",checkSection) ; 
