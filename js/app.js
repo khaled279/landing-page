@@ -45,6 +45,9 @@ function createListItems(){
         anchor.href = `#${section.id}`;
         anchor.target = "_self" ;
         anchor.textContent = section.id ; 
+        anchor.onclick = function(){
+            section.scrollIntoView({ behavior: 'smooth' }) ;
+            return false;}; 
         listItem.appendChild(anchor); 
         documentFragment.appendChild(listItem); 
     }
@@ -54,15 +57,27 @@ function createListItems(){
 }
 function checkSection(){
     let sections = getAllSections(); 
- for(let section of sections){
-    if (window.location.pathname+window.location.hash == `/index.html#${section.id}`) {
-     console.log('Viewing contact form' + section.id);
+    document.querySelector
+    let mainHero = document.querySelector('.main__hero') ; 
+ 
+for(let section of sections){
+    const menuItem = document.querySelector(`[href="#${section.id}"]`);
+    console.log(menuItem); 
+    if (scrollY >= section.offsetTop-200) {
+     console.log('Viewing section' + section.id);
+     for(let removeSection of sections) {
+        removeSection.classList.remove('your-active-class'); 
+        const otherMenuItems =  document.querySelector(`[href="#${removeSection.id}"]`);
+        otherMenuItems.classList.remove('your-active-class'); 
+    } 
+     section.classList.add('your-active-class') ; 
+     menuItem.classList.add('your-active-class'); 
     }
- }
- console.log("checking") ; 
+}
+ console.log("checking") ;   
  }
 
-document.addEventListener('scroll',checkSection()) ; 
+document.addEventListener("scroll",checkSection) ; 
 createListItems(); 
 
 /**
